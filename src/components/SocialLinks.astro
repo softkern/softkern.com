@@ -1,0 +1,25 @@
+---
+import { SITE } from 'config'
+
+interface Props {
+  class?: string
+}
+
+const { class: className } = Astro.props
+
+const socialLinks = SITE.socials || []
+---
+
+<div class:list={['flex gap-4', className]}>
+  {socialLinks.map(link => (
+    <a
+      href={link.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+      aria-label={link.name}
+    >
+      <div class:list={[link.icon, 'text-lg']} />
+    </a>
+  ))}
+</div>

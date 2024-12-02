@@ -1,0 +1,99 @@
+---
+import { MENUS, SITE } from 'config'
+import ThemeToggle from './ThemeToggle.astro'
+
+const currentPath = Astro.url.pathname
+---
+
+<header class="relative flex items-center justify-between mb-16">
+  <div class="flex items-center gap-5">
+    <!-- brand -->
+    <a href="/" aria-label="home" class="text-lg tracking-tighter font-pixel font-bold hover:color-hover transition-colors z-50">
+      {SITE.title}
+    </a>
+
+    <!-- menu -->
+    <nav id="main-nav"
+      class:list={[
+        "fixed inset-x-4 top-20 z-40 opacity-0 md:opacity-1 md:relative md:top-auto",
+        // "bg-white dark:bg-gray-500 md:bg-transparent md:dark:bg-transparent",
+        "p-4 md:p-0 rounded-lg md:rounded-none",
+        "flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-6",
+        "translate-y-1 pointer-events-none md:translate-y-0 md:opacity-100 md:pointer-events-auto"
+      ]}
+      aria-expanded="false"
+    >
+      { MENUS.map(item => (
+        <a href={item.url} class:list={[
+          "w-full hover:bg-gray-100 dark:hover:bg-gray-800 md:w-auto md:hover:bg-transparent md:dark:hover:bg-transparent",
+          "px-2 py-3 md:py-2 rounded-lg transition-colors btn hover:color-hover",
+          currentPath === item.url ? "color-hover" : ''
+        ]}>
+          {item.name}
+        </a>
+      )) }
+    </nav>
+  </div>
+
+  <!-- buttons -->
+  <div class="flex items-center gap-4 z-50">
+    <ThemeToggle />
+    <button id="menu-toggle" class="btn md:hidden">
+      <div class="i-carbon-menu text-xl" />
+    </button>
+  </div>
+
+  <!-- overlay -->
+  <div id="menu-overlay" class="fixed inset-0 bg-black/20 dark:bg-black/40 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300 md:hidden z-30">    
+  </div>
+</header>
+
+<script>
+  function initializeMobileMenu() {
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('main-nav');
+    const overlay = document.getElementById('menu-overlay');
+    const menuIcon = toggle?.querySelector('div');
+    
+    if (!toggle || !nav || !overlay || !menuIcon) return;
+
+    let isOpen = false;
+
+    function toggleMenu(open?: boolean) {
+      isOpen = open ?? !isOpen;
+      
+      toggle?.setAttribute('aria-expanded', isOpen.toString());
+      nav?.classList.toggle('translate-y-1', !isOpen);
+      nav?.classList.toggle('opacity-0', !isOpen);
+      nav?.classList.toggle('pointer-events-none', !isOpen);
+      
+      overlay?.classList.toggle('opacity-0', !isOpen);
+      overlay?.classList.toggle('pointer-events-none', !isOpen);
+      
+      document.body.classList.toggle('overflow-hidden', isOpen);
+    }
+
+    toggle.addEventListener('click', () => toggleMenu());
+    overlay.addEventListener('click', () => toggleMenu(false));
+
+    // Close menu on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen) toggleMenu(false);
+    });
+
+    // Close menu on desktop breakpoint
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    mediaQuery.addEventListener('change', (e) => {
+      if (e.matches && isOpen) toggleMenu(false);
+    });
+
+    // Close menu on navigation
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (isOpen) toggleMenu(false);
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', initializeMobileMenu);
+</script>
