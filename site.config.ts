@@ -2,10 +2,13 @@ import type { Link, Site } from '@types'
 
 const SITE: Site = {
   url: 'https://softkern.com',
-  favicon: '/favicon.svg',
-  author: 'softkern',
   title: 'softkern',
   description: 'welcome to my personal website',
+  favicon: '/favicon.svg',
+  author: {
+    name: 'softkern',
+    bio: 'Just for fun and life.',
+  },
   socials: [
     {
       name: 'GitHub',

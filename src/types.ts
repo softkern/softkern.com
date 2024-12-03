@@ -4,10 +4,15 @@ interface Link {
   icon?: string
 }
 
+interface Author {
+  name: string
+  bio?: string
+}
+
 interface Site {
   url: string
-  author: string
   title: string
+  author: Author
   socials?: Link[]
   favicon?: string
   description?: string

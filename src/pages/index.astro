@@ -1,4 +1,6 @@
 ---
+import Hero from '@components/Hero.astro'
+import LatestPosts from '@components/LatestPosts.astro'
 import BaseLayout from '@layouts/BaseLayout.astro'
 import { SITE } from 'config'
 ---
@@ -7,5 +9,8 @@ import { SITE } from 'config'
   title={SITE.title}
   description={SITE.description || ""}
 >
-  <h1>Astro</h1>
+  <div class="space-y-24">
+    <Hero />
+    <LatestPosts />
+  </div>
 </BaseLayout>

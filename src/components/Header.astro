@@ -16,7 +16,6 @@ const currentPath = Astro.url.pathname
     <nav id="main-nav"
       class:list={[
         "fixed inset-x-4 top-20 z-40 opacity-0 md:opacity-1 md:relative md:top-auto",
-        // "bg-white dark:bg-gray-500 md:bg-transparent md:dark:bg-transparent",
         "p-4 md:p-0 rounded-lg md:rounded-none",
         "flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-6",
         "translate-y-1 pointer-events-none md:translate-y-0 md:opacity-100 md:pointer-events-auto"
@@ -26,7 +25,7 @@ const currentPath = Astro.url.pathname
       { MENUS.map(item => (
         <a href={item.url} class:list={[
           "w-full hover:bg-gray-100 dark:hover:bg-gray-800 md:w-auto md:hover:bg-transparent md:dark:hover:bg-transparent",
-          "px-2 py-3 md:py-2 rounded-lg transition-colors btn hover:color-hover",
+          "px-2 py-3 md:py-2 rounded-lg transition-colors hover:color-hover",
           currentPath === item.url ? "color-hover" : ''
         ]}>
           {item.name}
@@ -38,8 +37,8 @@ const currentPath = Astro.url.pathname
   <!-- buttons -->
   <div class="flex items-center gap-4 z-50">
     <ThemeToggle />
-    <button id="menu-toggle" class="btn md:hidden">
-      <div class="i-carbon-menu text-xl" />
+    <button id="menu-toggle" class="md:hidden">
+      <div class="i-carbon-grid text-xl" />
     </button>
   </div>
 
@@ -53,9 +52,8 @@ const currentPath = Astro.url.pathname
     const toggle = document.getElementById('menu-toggle');
     const nav = document.getElementById('main-nav');
     const overlay = document.getElementById('menu-overlay');
-    const menuIcon = toggle?.querySelector('div');
     
-    if (!toggle || !nav || !overlay || !menuIcon) return;
+    if (!toggle || !nav || !overlay) return;
 
     let isOpen = false;
 
