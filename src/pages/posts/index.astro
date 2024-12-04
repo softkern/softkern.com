@@ -1,0 +1,45 @@
+---
+import PostPreview from '@components/PostPreview.astro'
+import BaseLayout from '@layouts/BaseLayout.astro'
+import { fetchCategoryMap, fetchPosts } from '@utils/post'
+
+const posts = await fetchPosts()
+const categories = Array.from((await fetchCategoryMap()).keys())
+---
+
+<BaseLayout title="所有文章" description="所有文章都在这了">
+  <div class="space-y-8">
+    <div class="flex items-baseline gap-3">
+      <h1 class="heading text-4xl">博客</h1>
+      <a href="/rss.xml">
+        <div class="i-carbon-rss hover:color-hover" />
+      </a>
+    </div>
+
+    <div class="flex flex-col md:flex-row gap-8">
+      <div class="md:w-3/4">
+        <div class="space-y-8 mt-8">
+          {
+            posts.map(post => (
+              <PostPreview post={post} />
+            ))
+          }
+        </div>
+      </div>
+
+      <aside class="md:w-1/4">
+        <div class="sticky top-8">
+          <h2 class="heading text-xl mb-4">分类</h2>
+          <div class="flex flex-wrap gap-2">
+            {categories.map(category => (
+              <button class="btn rounded-full px-3 py-1">
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
+      </aside>
+    </div>
+
+  </div>
+</BaseLayout>

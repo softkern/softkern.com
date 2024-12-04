@@ -2,6 +2,7 @@
 title: 'Markdown Style Guide'
 excerpt: 'Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.'
 createdAt: 'Jun 19 2024'
+tags: ["markdown", "test"]
 ---
 
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.

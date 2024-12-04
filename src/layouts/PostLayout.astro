@@ -1,0 +1,59 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import TableOfContents from '@components/TableOfContents.astro'
+import BaseLayout from '@layouts/BaseLayout.astro'
+import { formatDate } from '@utils/date'
+import { getReadingTime } from '@utils/reading-time'
+import type { MarkdownHeading } from 'astro'
+
+interface Props {
+  post: CollectionEntry<'posts'>
+  headings: MarkdownHeading[]
+}
+
+const { post, headings } = Astro.props
+const formattedTime = formatDate(post.data.createdAt)
+const readingTime = getReadingTime(post.body)
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.excerpt || ""},
+  image={post.data.cover?.src}
+  type='article'
+>
+  <article class="prose dark:prose-invert max-w-none">
+    <header class="mb-8 not-prose">
+      <div class="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400">
+        <time datetime={post.data.createdAt.toISOString()}>{formattedTime}</time>
+        <span>•</span>
+        {
+          readingTime && <span>{readingTime}</span>
+        }
+      </div>
+      <h1 class="heading text-4xl mt-2 mb-4">{post.data.title}</h1>
+      {post.data.tags && (
+        <div class="flex flex-wrap gap-2">
+          {post.data.tags.map(tag => (
+            <span class="btn px-2 py-1 text-sm rd-md">{tag}</span>
+          ))}
+        </div>
+      )}
+    </header>
+
+    {
+      headings.length > 0 && (
+      <details class="mb-8 not-prose bg-gray-200 dark:bg-gray-800 rounded-lg themed">
+        <summary class="px-4 py-3 font-medium cursor-pointer hover:color-hover transition-colors">
+          目录
+        </summary>
+        <div class="px-4 pb-4">
+          <TableOfContents headings={headings} />
+        </div>
+      </details>
+      )
+    }
+
+    <slot />
+  </article>
+</BaseLayout>
