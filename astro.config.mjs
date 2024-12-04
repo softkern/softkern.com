@@ -3,6 +3,10 @@ import { defineConfig } from 'astro/config'
 import UnoCSS from 'unocss/astro'
 import { SITE } from './site.config'
 
+import mdx from '@astrojs/mdx'
+
+import expressiveCode from 'astro-expressive-code'
+
 // https://astro.build/config
 export default defineConfig({
   site: SITE.url,
@@ -10,5 +14,14 @@ export default defineConfig({
     UnoCSS({
       injectReset: true,
     }),
+    expressiveCode({
+      // useThemedScrollbars: true,
+      themeCssSelector: (theme) => `.${theme.type}`,
+      themes: ['github-dark', 'github-light'],
+      styleOverrides: {
+        borderRadius: '0.5em',
+      },
+    }),
+    mdx(),
   ],
 })
