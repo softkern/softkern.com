@@ -15,9 +15,9 @@ export default defineConfig({
       injectReset: true,
     }),
     expressiveCode({
-      // useThemedScrollbars: true,
+      useThemedScrollbars: true,
       themeCssSelector: (theme) => `.${theme.type}`,
-      themes: ['github-dark', 'github-light'],
+      themes: ['catppuccin-mocha', 'catppuccin-latte'],
       styleOverrides: {
         borderRadius: '0.5em',
       },

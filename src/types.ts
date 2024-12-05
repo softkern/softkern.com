@@ -1,3 +1,16 @@
+interface Tool {
+  name: string
+  description: string
+  url: string
+  image?: string
+}
+
+interface Toolset {
+  title: string
+  description: string
+  items: Tool[]
+}
+
 interface Link {
   name: string
   url: string
@@ -27,4 +40,4 @@ interface Umami {
   website_id: string
 }
 
-export type { Link, Site }
+export type { Link, Site, Toolset }
