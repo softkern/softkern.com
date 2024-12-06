@@ -8,31 +8,31 @@ const development: Toolset = {
       name: 'CleanShot X',
       description: 'Mac上强大好用的截图工具',
       url: 'https://cleanshot.com/',
+      image: '/uses/software/cleanshot-x.png',
     },
     {
       name: 'Raycast',
       description: '通往一切的捷径',
       url: 'https://www.raycast.com/',
+      image: '/uses/software/raycast.webp',
     },
     {
       name: 'Ollama',
       description: '本地化大模型',
       url: 'https://ollama.com/',
+      image: '/uses/software/ollama.png',
     },
     {
       name: 'PicGo',
       description: '图片上传压缩管理一站式',
       url: 'https://molunerfinn.com/PicGo/',
+      image: '/uses/software/picgo.png',
     },
     {
       name: 'Mos',
-      description: 'Mac上鼠标增强工具，更符合使用习惯',
+      description: '更符合使用习惯的鼠标增强工具',
       url: 'https://mos.caldis.me/',
-    },
-    {
-      name: 'Snipaste',
-      description: '很好用的截图加贴图工具',
-      url: 'https://zh.snipaste.com/',
+      image: '/uses/software/mos.webp',
     },
   ],
 }
