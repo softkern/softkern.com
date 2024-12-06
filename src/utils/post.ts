@@ -52,7 +52,3 @@ export const fetchCategoryMap = async () => {
   })
   return categoryMap
 }
-
-export const fetchCategory = async (slug: string) => {
-  return await getEntry('categories', slug)
-}

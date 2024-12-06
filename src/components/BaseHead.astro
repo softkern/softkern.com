@@ -34,7 +34,7 @@ const ogType = type
 <title>{title} | {SITE.title}</title>
 <meta name="title" content={`${title} | ${SITE.title}`} />
 <meta name="description" content={description} />
-<meta name="author" content={author} />
+<meta name="author" content={author.toString()} />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link rel="alternate" type="application/rss+xml" title={SITE.title} href={`${Astro.site}rss.xml`} />
 
