@@ -1,0 +1,101 @@
+/* Add custom prose styles */
+.prose {
+  color: inherit;
+  font-family: var(--font-sans);
+}
+
+.prose :where(h1, h2, h3, h4, h5, h6):not(:where([class~="not-prose"] *)) {
+  color: inherit;
+  font-weight: 700;
+  font-family: var(--font-display);
+  line-height: 1.2;
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+.prose :where(h1):not(:where([class~="not-prose"] *)) {
+  font-size: 2.25em;
+  margin-top: 0;
+}
+
+.prose :where(h2):not(:where([class~="not-prose"] *)) {
+  font-size: 1.875em;
+}
+
+.prose :where(h3):not(:where([class~="not-prose"] *)) {
+  font-size: 1.5em;
+}
+
+.prose :where(p, ul, ol):not(:where([class~="not-prose"] *)) {
+  line-height: 1.75;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+.prose :where(code):not(:where([class~="not-prose"] *)) {
+  font-family: var(--font-mono);
+  background-color: rgb(var(--color-gray-100));
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.25rem;
+  font-size: 0.875em;
+  font-weight: 500;
+}
+
+.dark .prose :where(code):not(:where([class~="not-prose"] *)) {
+  background-color: rgb(var(--color-gray-800));
+}
+
+.prose :where(pre):not(:where([class~="not-prose"] *)) {
+  font-family: var(--font-mono);
+  background-color: rgb(var(--color-gray-100));
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+  font-size: 0.875em;
+  line-height: 1.7142857;
+}
+
+.dark .prose :where(pre):not(:where([class~="not-prose"] *)) {
+  background-color: rgb(var(--color-gray-800));
+}
+
+.prose :where(a):not(:where([class~="not-prose"] *)) {
+  color: var(--color-primary-500);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.prose :where(a):not(:where([class~="not-prose"] *)):hover {
+  text-decoration: underline;
+}
+
+.prose :where(blockquote):not(:where([class~="not-prose"] *)) {
+  font-style: italic;
+  border-left: 4px solid rgb(var(--color-gray-200));
+  padding-left: 1rem;
+  margin-left: 0;
+  color: rgb(var(--color-gray-600));
+}
+
+.dark .prose :where(blockquote):not(:where([class~="not-prose"] *)) {
+  border-left-color: rgb(var(--color-gray-700));
+  color: rgb(var(--color-gray-400));
+}
+
+@media (max-width: 640px) {
+  .prose {
+    font-size: 0.95rem;
+  }
+
+  .prose :where(h1):not(:where([class~="not-prose"] *)) {
+    font-size: 2em;
+  }
+
+  .prose :where(h2):not(:where([class~="not-prose"] *)) {
+    font-size: 1.7em;
+  }
+
+  .prose :where(h3):not(:where([class~="not-prose"] *)) {
+    font-size: 1.4em;
+  }
+}

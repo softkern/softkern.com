@@ -28,10 +28,10 @@ const readingTime = getReadingTime(post.body)
       href={`/posts/${post.slug}`}
       class="block group-hover:text-primary-500 themed"
     >
-      <h2 class="heading text-2xl mt-2 mb-2">
+      <h2 class="heading text-2xl mt-2 mb-2 hover:text-primary-500">
         {post.data.title}
       </h2>
     </a>
-    <p class="text-gray-600 dark:text-gray-400 themed">{post.data.excerpt}</p>
+    <p class="text-gray-600 dark:text-gray-400">{post.data.excerpt}</p>
   </Card>
 </article>

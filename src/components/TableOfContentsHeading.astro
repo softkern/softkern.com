@@ -7,9 +7,16 @@ const { depth, slug, subheadings, text } = Astro.props
 ---
 
 <li class={`${depth <= 2 ? '' : 'ms-2'}`}>
-    <a href={'#' + slug} transition:animate="fade" class={`pl-2 decoration-none transition-all font-350 hover:b-l-4 hover:b-l-[black] dark:hover:b-l-[white] hover:2xl:b-0 hover:2xl:text-black dark:hover:2xl:text-white ${depth <= 2 ? 'mt-2' : 'mt-1 text-sm'}`}>
+    { text && 
+      <a href={'#' + slug} transition:animate="fade" 
+        class:list={[
+          "text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400",
+          'pl-2 decoration-none font-350',
+        ]}
+      >
         { text }
-    </a>
+      </a>
+    }
     {
         subheadings.length > 0 && (
             <ul>
