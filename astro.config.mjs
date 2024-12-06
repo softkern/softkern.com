@@ -1,11 +1,11 @@
-// @ts-check
+import mdx from '@astrojs/mdx'
+import sitemap from '@astrojs/sitemap'
+import expressiveCode from 'astro-expressive-code'
 import { defineConfig } from 'astro/config'
 import UnoCSS from 'unocss/astro'
 import { SITE } from './site.config'
 
-import mdx from '@astrojs/mdx'
-
-import expressiveCode from 'astro-expressive-code'
+import playformCompress from '@playform/compress'
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,6 +22,8 @@ export default defineConfig({
         borderRadius: '0.5em',
       },
     }),
+    playformCompress(),
     mdx(),
+    sitemap(),
   ],
 })

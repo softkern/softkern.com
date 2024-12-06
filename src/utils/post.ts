@@ -1,4 +1,4 @@
-import { type CollectionEntry, getCollection, getEntry } from 'astro:content'
+import { type CollectionEntry, getCollection } from 'astro:content'
 
 const normalizePost = (post: CollectionEntry<'posts'>) => {
   post.data.category = post.data.category || 'default'
