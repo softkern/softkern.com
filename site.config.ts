@@ -2,12 +2,12 @@ import type { Link, Site } from '@types'
 
 const SITE: Site = {
   url: 'https://softkern.com',
-  title: 'softkern',
+  title: 'Softkern',
   description: 'welcome to my personal website',
   favicon: '/favicon.svg',
   author: {
     name: 'softkern',
-    bio: 'Just for fun and life.',
+    bio: '只是为了好玩和生活.',
   },
   socials: [
     {

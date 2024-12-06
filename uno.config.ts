@@ -3,7 +3,7 @@ import { defineConfig, presetIcons, presetTypography, presetUno, presetWebFonts,
 export default defineConfig({
   shortcuts: {
     btn: 'px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-all duration-300',
-    heading: 'font-display font-bold tracking-tight',
+    heading: 'font-bold tracking-tight',
     card: 'p-6 rounded-xl bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-all duration-300',
     'bg-base': 'bg-gray-50 dark:bg-gray-900',
     'color-base': 'text-gray-800 dark:text-gray-200',
@@ -25,6 +25,7 @@ export default defineConfig({
     presetTypography(),
     presetWebFonts({
       fonts: {
+        sans: 'Inter:400,600,800',
         pixel: 'Press Start 2P',
       },
     }),
