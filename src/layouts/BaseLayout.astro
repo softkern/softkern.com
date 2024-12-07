@@ -27,7 +27,7 @@ const { ...head } = Astro.props
     <BackToTop />
     {
       SITE.umami &&
-      <script is:inline defer async src={SITE.umami?.url} data-website-id={SITE.umami?.website_id} />
+      <script is:inline type="text/partytown" defer src={SITE.umami?.url} data-website-id={SITE.umami?.website_id} />
     }
   </body>
 </html>

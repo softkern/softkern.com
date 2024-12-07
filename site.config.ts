@@ -17,7 +17,7 @@ const SITE: Site = {
     },
     {
       name: 'X',
-      url: 'https://twitter.com/softkern',
+      url: 'https://x.com/softkern',
       icon: 'i-carbon-logo-x',
     },
   ],

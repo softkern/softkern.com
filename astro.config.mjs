@@ -1,11 +1,11 @@
 import mdx from '@astrojs/mdx'
+import partytown from '@astrojs/partytown'
 import sitemap from '@astrojs/sitemap'
+import playformCompress from '@playform/compress'
 import expressiveCode from 'astro-expressive-code'
 import { defineConfig } from 'astro/config'
 import UnoCSS from 'unocss/astro'
 import { SITE } from './site.config'
-
-import playformCompress from '@playform/compress'
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,5 +25,6 @@ export default defineConfig({
     playformCompress(),
     mdx(),
     sitemap(),
+    partytown(),
   ],
 })
