@@ -11,7 +11,7 @@ const toolsets = [hardware, development, software]
   <div class="space-y-12">
     <header class="space-y-4">
       <h1 class="heading text-4xl">常用工具</h1>
-      <p class="text-gray-600 dark:text-gray-400 max-w-2xl">
+      <p class="text-gray-600 dark:text-gray-400 bg-base max-w-2xl">
         我在日常开发和工作中使用的硬件、软件和技术栈
       </p>
     </header>
@@ -21,7 +21,7 @@ const toolsets = [hardware, development, software]
         <section class="space-y-6">
           <div class="space-y-2">
             <h2 class="heading text-2xl">{section.title}</h2>
-            <p class="text-gray-600 dark:text-gray-400">{section.description}</p>
+            <p class="text-gray-600 dark:text-gray-400 bg-base">{section.description}</p>
           </div>
 
           <div class="grid gap-6 md:grid-cols-2">
@@ -35,8 +35,8 @@ const toolsets = [hardware, development, software]
                   <img src={item.image} alt="tool logo" decoding="async" class="max-h-15" loading="lazy" />
                 </div>
                 <div class="flex flex-col group gap-1">
-                  <h3 class="heading hover:text-primary-500 text-lg">{item.name}</h3>
-                  <p class="text-gray-600 dark:text-gray-400 text-sm">{item.description}</p>
+                  <h3 class="heading color-base hover:text-primary-500 text-lg">{item.name}</h3>
+                  <p class="text-gray-600 dark:text-gray-400 switch-animation text-sm">{item.description}</p>
                 </div>
               </a>
             ))}

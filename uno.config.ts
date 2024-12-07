@@ -5,8 +5,9 @@ export default defineConfig({
     btn: 'px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 transition-all duration-300',
     heading: 'font-bold tracking-tight',
     card: 'p-6 rounded-xl bg-gray-50 dark:bg-gray-800 shadow-sm hover:shadow-md transition-all duration-300',
-    'bg-base': 'bg-white dark:bg-gray-900',
-    'color-base': 'text-gray-800 dark:text-gray-200',
+    'switch-animation': 'transition duration-300',
+    'bg-base': 'bg-white dark:bg-gray-900 switch-animation',
+    'color-base': 'text-gray-800 dark:text-gray-200 switch-animation',
     'color-mark': 'text-primary-500 dark:text-primary-500',
   },
   theme: {
@@ -37,6 +38,21 @@ export default defineConfig({
       },
     },
   },
+  variants: [
+    (matcher) => {
+      if (matcher.startsWith('group-')) {
+        return {
+          // 例如 group-hover
+          layer: 'group',
+          name: 'group',
+          variants: [
+            { name: 'hover', modifier: 'hover' },
+            // 你可以添加更多变体
+          ],
+        }
+      }
+    },
+  ],
   presets: [
     presetUno(),
     presetIcons({

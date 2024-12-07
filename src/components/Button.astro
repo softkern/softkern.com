@@ -3,14 +3,17 @@ interface Props {
   variant?: 'primary' | 'secondary'
   class?: string
   href?: string
+  rounded?: string
+  compact?: boolean
 }
 
-const { variant = 'secondary', class: className, href } = Astro.props
+const { variant = 'secondary', class: className, href, rounded = 'lg', compact = false } = Astro.props
 
-const baseStyles = 'inline-flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300'
+const baseStyles = `inline-flex items-center gap-2 ${compact ? 'px-3 py-1' : 'px-4 py-2'} rounded-${rounded}`
 const variants = {
-  primary: 'bg-primary-500 text-white hover:bg-primary-600 dark:hover:bg-primary-400',
-  secondary: 'bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700',
+  primary:
+    'bg-primary-500 dark:bg-primary-600 text-white switch-animation hover:bg-primary-600 dark:hover:bg-primary-500',
+  secondary: 'color-base bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700',
 }
 
 const Element = href ? 'a' : 'button'
@@ -21,8 +24,7 @@ const Element = href ? 'a' : 'button'
   class:list={[
     baseStyles,
     variants[variant],
-    'themed',
-    className
+    className,
   ]}
 >
   <slot />

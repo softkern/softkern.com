@@ -1,5 +1,6 @@
 ---
 import { SITE } from 'config'
+import Button from './Button.astro'
 ---
 
 <section class="space-y-8">
@@ -7,17 +8,18 @@ import { SITE } from 'config'
     <h1 class="heading text-4xl md:text-5xl">
       你好，我是 <span class="color-mark">{SITE.author.name.toUpperCase()}</span>
     </h1>
-    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl">
+    <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl bg-base">
       {SITE.author.bio}
     </p>
   </div>
 
   <div class="flex gap-4">
-    <a href="/posts" class="btn dark:text-white text-black" aria-label="blog">
+    <Button href="/posts" variant='primary'>
       查看文章
-    </a>
-    <a href="/about" class="btn" aria-label="about">
+    </Button>
+
+    <Button href='/about'>
       关于
-    </a>
+    </Button>
   </div>
 </section>

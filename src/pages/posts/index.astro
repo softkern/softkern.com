@@ -1,4 +1,5 @@
 ---
+import Button from '@components/Button.astro'
 import PostPreview from '@components/PostPreview.astro'
 import BaseLayout from '@layouts/BaseLayout.astro'
 import { fetchCategoryMap, fetchPosts } from '@utils/post'
@@ -32,9 +33,9 @@ const categories = Array.from((await fetchCategoryMap()).keys())
           <h2 class="heading text-xl mb-4">分类</h2>
           <div class="flex flex-wrap gap-2">
             {categories.map(category => (
-              <button class="btn rounded-full px-3 py-1">
+              <Button rounded='full' compact={true}>
                 {category}
-              </button>
+              </Button>
             ))}
           </div>
         </div>

@@ -15,7 +15,7 @@ const readingTime = getReadingTime(post.body)
 
 <article class="group">
   <Card>
-    <div class="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400 themed">
+    <div class="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400 switch-animation">
       <time datetime={post.data.createdAt.toISOString()}>{createdTime}</time>
       {readingTime && (
         <>
@@ -26,12 +26,12 @@ const readingTime = getReadingTime(post.body)
     </div>
     <a
       href={`/posts/${post.slug}`}
-      class="block group-hover:text-primary-500 themed"
+      class="block group-hover:text-primary-500"
     >
-      <h2 class="heading text-2xl mt-2 mb-2 hover:text-primary-500">
+      <h2 class="heading text-2xl mt-2 mb-2 color-base hover:text-primary-500">
         {post.data.title}
       </h2>
     </a>
-    <p class="text-gray-600 dark:text-gray-400">{post.data.excerpt}</p>
+    <p class="text-gray-600 dark:text-gray-400 switch-animation">{post.data.excerpt}</p>
   </Card>
 </article>
