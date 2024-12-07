@@ -7,7 +7,7 @@ export default defineConfig({
     card: 'p-6 rounded-xl bg-gray-50 dark:bg-gray-800 shadow-sm hover:shadow-md transition-all duration-300',
     'bg-base': 'bg-white dark:bg-gray-900',
     'color-base': 'text-gray-800 dark:text-gray-200',
-    'color-mark': 'text-primary-700 dark:text-primary-500',
+    'color-mark': 'text-primary-500 dark:text-primary-500',
   },
   theme: {
     colors: {
