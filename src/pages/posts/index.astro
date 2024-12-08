@@ -2,10 +2,11 @@
 import Button from '@components/Button.astro'
 import PostPreview from '@components/PostPreview.astro'
 import BaseLayout from '@layouts/BaseLayout.astro'
-import { fetchCategoryMap, fetchPosts } from '@utils/post'
+import { fetchCategoryMap, fetchPosts, fetchTags } from '@utils/post'
 
 const posts = await fetchPosts()
 const categories = Array.from((await fetchCategoryMap()).keys())
+const tags = Array.from((await fetchTags()).keys())
 ---
 
 <BaseLayout title="所有文章" description="所有文章都在这了">
@@ -29,14 +30,35 @@ const categories = Array.from((await fetchCategoryMap()).keys())
       </div>
 
       <aside class="md:w-1/4">
-        <div class="sticky top-8">
-          <h2 class="heading text-xl mb-4">分类</h2>
-          <div class="flex flex-wrap gap-2">
-            {categories.map(category => (
-              <Button rounded='full' compact={true}>
-                {category}
-              </Button>
-            ))}
+        <div class="sticky top-8 space-y-8">
+          <div>
+            <h2 class="heading text-xl mb-4">分类</h2>
+            <div class="flex flex-wrap gap-2">
+              {categories.map(category => (
+                <Button 
+                  href={`/categories/${category}`}
+                  rounded='full' 
+                  compact={true}
+                >
+                  {category}
+                </Button>
+              ))}
+            </div>
+          </div>
+          
+          <div>
+            <h2 class="heading text-xl mb-4">标签</h2>
+            <div class="flex flex-wrap gap-2">
+              {tags.map(tag => (
+                <Button 
+                  href={`/tags/${tag}`}
+                  rounded='full'
+                  compact={true}
+                >
+                  {tag}
+                </Button>
+              ))}
+            </div>
           </div>
         </div>
       </aside>

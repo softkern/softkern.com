@@ -38,26 +38,12 @@ export default defineConfig({
       },
     },
   },
-  variants: [
-    (matcher) => {
-      if (matcher.startsWith('group-')) {
-        return {
-          // 例如 group-hover
-          layer: 'group',
-          name: 'group',
-          variants: [
-            { name: 'hover', modifier: 'hover' },
-            // 你可以添加更多变体
-          ],
-        }
-      }
-    },
-  ],
   presets: [
     presetUno(),
     presetIcons({
       collections: {
         carbon: () => import('@iconify-json/carbon/icons.json').then((i) => i.default),
+        logos: () => import('@iconify-json/logos/icons.json').then((i) => i.default),
       },
       extraProperties: {
         display: 'inline-block',

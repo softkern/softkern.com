@@ -15,6 +15,13 @@ const readingTime = getReadingTime(post.body)
 
 <article class="group">
   <Card>
+    {post.data.cover && (
+      <img 
+        src={post.data.cover.src} 
+        alt={post.data.title}
+        class="w-full h-48 object-cover rounded-t-xl mb-4"
+      />
+    )}
     <div class="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400 switch-animation">
       <time datetime={post.data.createdAt.toISOString()}>{createdTime}</time>
       {readingTime && (

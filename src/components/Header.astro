@@ -8,8 +8,9 @@ const currentPath = Astro.url.pathname
 <header class="relative flex items-center justify-between mb-16">
   <div class="flex items-center gap-5">
     <!-- brand -->
-    <a href="/" aria-label="home" class="text-lg tracking-tighter font-pixel font-bold hover:text-primary-500 z-50">
-      {SITE.title}
+    <a href="/" class="flex items-center gap-2">
+      <img src="/logo.svg" alt="Logo" class="w-8 h-8" />
+      <span class="font-bold text-xl">Softkern</span>
     </a>
 
     <!-- menu -->
