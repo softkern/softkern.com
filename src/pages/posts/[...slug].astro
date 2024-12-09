@@ -1,4 +1,6 @@
 ---
+import MDImage from '@components/MDImage.astro'
+import MDLink from '@components/MDLink.astro'
 import PostLayout from '@layouts/PostLayout.astro'
 import { fetchPosts } from '@utils/post'
 import type { GetStaticPaths } from 'astro'
@@ -16,5 +18,5 @@ const { Content, headings } = await post.render()
 ---
 
 <PostLayout post={post} headings={headings}>
-  <Content />
+  <Content components={{ a: MDLink, img: MDImage }} />
 </PostLayout>

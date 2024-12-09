@@ -36,7 +36,9 @@ const readingTime = getReadingTime(post.body)
       {post.data.tags && (
         <div class="flex flex-wrap gap-2">
           {post.data.tags.map((tag: string) => (
-            <span class="btn px-2 py-1 text-sm rd-md">{tag}</span>
+            <a href={`/tags/${tag}`} title="tag">
+              <span class="btn px-2 py-1 text-sm rd-md">{tag}</span>
+            </a>
           ))}
         </div>
       )}
