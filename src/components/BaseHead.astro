@@ -21,13 +21,13 @@ const {
   type = 'website',
 } = Astro.props
 
-const socialImageURL = new URL(image ?? 'favicon.svg', Astro.url.origin).href
+const socialImageURL = new URL(image ?? 'logo.svg', Astro.url.origin).href
 const ogType = type
 ---
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/svg+xml" href="/logo.svg" />
 <link rel="canonical" href={canonicalURL} />
 <meta name="generator" content={Astro.generator} />
 
