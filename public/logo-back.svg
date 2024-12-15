@@ -1,0 +1,86 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .element {
+      animation: slideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+      transform-origin: center;
+    }
+    
+    .e1 { animation-delay: 0s; }
+    .e2 { animation-delay: 0.15s; }
+    .e3 { animation-delay: 0.3s; }
+    .e4 { animation-delay: 0.45s; }
+    
+    @keyframes slideIn {
+      0% { 
+        opacity: 0;
+        transform: translateY(10px) scale(0.95);
+      }
+      100% { 
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .logo:hover .element {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+      100% { transform: translateY(0); }
+    }
+
+    .gradient-bg {
+      fill: url(#gradient);
+    }
+  </style>
+  
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="0" x2="100" y2="100">
+      <stop offset="0%" stop-color="#0EA5E9" />
+      <stop offset="100%" stop-color="#0284C7" />
+    </linearGradient>
+  </defs>
+
+  <g class="logo">
+    <!-- 背景圆角矩形 带渐变 -->
+    <rect 
+      width="100" 
+      height="100" 
+      rx="24" 
+      class="gradient-bg"
+    />
+    
+    <!-- 左侧微曲线 - 调整宽度和弧度 -->
+    <path 
+      class="element e1" 
+      d="M30 35 C30 28 40 28 40 35 L40 65 C40 72 30 72 30 65 Z" 
+      fill="white" 
+      fill-opacity="0.95"
+    />
+    
+    <!-- 右侧箭头 - 调整位置和粗细 -->
+    <path 
+      class="element e2"
+      d="M50 25 L70 50 L50 75" 
+      stroke="white" 
+      stroke-width="10"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      fill="none"
+    />
+    
+    <!-- 核心圆点 - 调整位置和大小 -->
+    <circle 
+      class="element e3"
+      cx="70" 
+      cy="50" 
+      r="5" 
+      fill="white"
+      fill-opacity="0.9"
+    />
+    
+  </g>
+</svg>
