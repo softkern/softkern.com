@@ -32,10 +32,4 @@ export default defineConfig({
     partytown(),
     db(),
   ],
-  adapter: cloudflare(),
-  vite: {
-    ssr: {
-      external: ['node:stream'],
-    },
-  },
 })

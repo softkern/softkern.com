@@ -1,7 +1,8 @@
 import { PostStats, db, eq, sql } from 'astro:db'
 import type { APIRoute } from 'astro'
 
-export const prerender = false
+import { fetchPosts } from '@utils/post'
+
 export const GET: APIRoute = async ({ params }) => {
   const { slug } = params
   if (!slug) {
@@ -64,4 +65,11 @@ export const POST: APIRoute = async ({ request, params }) => {
       'cache-control': 'no-store, max-age=0',
     },
   })
+}
+
+export async function getStaticPaths() {
+  const posts = await fetchPosts()
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+  }))
 }
