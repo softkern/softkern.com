@@ -6,6 +6,7 @@ import { formatDate } from '@utils/date'
 import { getReadingTime } from '@utils/reading-time'
 import type { MarkdownHeading } from 'astro'
 import '@styles/prose.css'
+import PostViews from '@components/PostViews.astro'
 
 interface Props {
   post: CollectionEntry<'posts'>
@@ -31,6 +32,8 @@ const readingTime = getReadingTime(post.body)
         {
           readingTime && <span>{readingTime}</span>
         }
+        <span>•</span>
+        <PostViews slug={post.slug} />
       </div>
       <h1 class="heading text-4xl mt-2 mb-4">{post.data.title}</h1>
       {post.data.tags && (

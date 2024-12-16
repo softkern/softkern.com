@@ -1,0 +1,29 @@
+---
+interface Props {
+  slug: string
+}
+
+const { slug } = Astro.props
+---
+
+<div>
+  <span id="post-views" data-slug={slug}></span> 次浏览
+</div>
+
+<script>
+const viewsElement =  document.getElementById("post-views");
+const slug = viewsElement?.dataset.slug;
+
+async function fetchStats() {
+  const response = await fetch(`/api/stats/${slug}`)
+  const stats = await response.json()
+
+  if (viewsElement) {
+    viewsElement.textContent = stats.views;
+  }
+}
+
+document.addEventListener('astro:page-load', async () => {
+  await fetchStats()
+});
+</script>

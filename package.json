@@ -5,7 +5,7 @@
   "scripts": {
     "prepare": "husky",
     "dev": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro check && astro build --remote",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "biome lint . --apply-unsafe",
@@ -14,12 +14,14 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^4.0.1",
+    "@astrojs/cloudflare": "^12.1.0",
+    "@astrojs/db": "^0.14.3",
+    "@astrojs/mdx": "^4.0.2",
     "@astrojs/partytown": "^2.1.2",
     "@astrojs/rss": "^4.0.10",
     "@astrojs/sitemap": "^3.2.1",
     "@playform/compress": "^0.1.6",
-    "astro": "^5.0.2",
+    "astro": "^5.0.5",
     "astro-expressive-code": "^0.38.3",
     "sharp": "^0.33.5",
     "typescript": "^5.7.2"

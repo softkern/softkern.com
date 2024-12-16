@@ -5,7 +5,7 @@ import BaseLayout from '@layouts/BaseLayout.astro'
 import { fetchCategoryMap } from '@utils/post'
 import type { GetStaticPaths } from 'astro'
 
-export const getStaticPaths = (async ({ paginate }) => {
+export const getStaticPaths = (async () => {
   const categoryMap = await fetchCategoryMap()
   const categories = Array.from(categoryMap.keys())
 

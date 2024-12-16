@@ -1,3 +1,4 @@
+import db from '@astrojs/db'
 import mdx from '@astrojs/mdx'
 import partytown from '@astrojs/partytown'
 import sitemap from '@astrojs/sitemap'
@@ -7,9 +8,12 @@ import { defineConfig } from 'astro/config'
 import UnoCSS from 'unocss/astro'
 import { SITE } from './site.config'
 
+import cloudflare from '@astrojs/cloudflare'
+
 // https://astro.build/config
 export default defineConfig({
   site: SITE.url,
+
   integrations: [
     UnoCSS({
       injectReset: true,
@@ -26,5 +30,12 @@ export default defineConfig({
     mdx(),
     sitemap(),
     partytown(),
+    db(),
   ],
+  adapter: cloudflare(),
+  vite: {
+    ssr: {
+      external: ['node:stream'],
+    },
+  },
 })
