@@ -1,0 +1,20 @@
+---
+import Brand from './Brand.astro'
+import Breakline from './Breakline.astro'
+import Menu from './Menu.astro'
+import ThemeToggle from './ThemeToggle.astro'
+---
+
+<header class="lg:w-1/5">
+  <div
+    class="sticky top-0 z-10 flex flex-col space-y-6 transition-all duration-300 lg:py-6"
+  >
+    <Brand />
+    <div class="space-y-3">
+      <Menu />
+      <Breakline />
+
+      <ThemeToggle />
+    </div>
+  </div>
+</header>

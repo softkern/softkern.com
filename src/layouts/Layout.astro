@@ -1,5 +1,7 @@
 ---
 import '@/styles/global.css'
+import { ClientRouter } from 'astro:transitions'
+import Header from '@components/Header.astro'
 ---
 
 <!doctype html>
@@ -10,9 +12,17 @@ import '@/styles/global.css'
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>Astro Basics</title>
+    <ClientRouter />
   </head>
   <body>
-    <slot />
+    <div class="mx-auto max-w-6xl">
+      <div class="flex flex-col lg:flex-row lg:gap-2 lg:py-4 xl:pb-8">
+        <Header />
+        <main class="max-w-[915px] transition-all duration-300 lg:w-4/5">
+          <slot />
+        </main>
+      </div>
+    </div>
   </body>
 </html>
 
@@ -24,3 +34,22 @@ import '@/styles/global.css'
     height: 100%;
   }
 </style>
+
+<script is:inline>
+  const theme = (() => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark";
+    }
+    return "light";
+  })();
+
+  if (theme === "light") {
+    document.documentElement.classList.remove("dark");
+  } else {
+    document.documentElement.classList.add("dark");
+  }
+  window.localStorage.setItem("theme", theme);
+</script>

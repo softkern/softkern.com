@@ -15,6 +15,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.0.3",
     "astro": "^5.2.3",
+    "astro-icon": "^1.1.5",
     "tailwindcss": "^4.0.3"
   },
   "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0",
@@ -22,6 +23,7 @@
     "@biomejs/biome": "1.9.4",
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
+    "@iconify-json/carbon": "^1.2.6",
     "@tailwindcss/typography": "^0.5.16",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3"
