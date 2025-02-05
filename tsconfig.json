@@ -7,7 +7,8 @@
     "strictNullChecks": true,
     "allowJs": true,
     "paths": {
-      "@*": ["./src/*"]
+      "@*": ["./src/*"],
+      "config": ["site.config.ts"]
     }
   }
 }

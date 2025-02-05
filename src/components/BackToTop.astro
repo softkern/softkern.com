@@ -1,0 +1,32 @@
+---
+import { Icon } from 'astro-icon/components'
+---
+
+<button
+  id="back-to-top"
+  class="fixed cursor-pointer bottom-8 right-8 p-2 rounded-full bg-primary-500 text-neutral-800 dark:text-neutral-200 shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:bg-primary-600"
+  aria-label="Back to top"
+>
+  <div class="i-carbon-arrow-up text-xl"></div>
+  <Icon name="carbon:arrow-up" class="text-xl" />
+</button>
+
+<script>
+  function initializeBackToTop() {
+    const button = document.getElementById("back-to-top");
+    if (!button) return;
+
+    const showButton = () => {
+      const scrolled = window.scrollY > window.innerHeight / 2;
+      button.classList.toggle("opacity-0", !scrolled);
+      button.classList.toggle("pointer-events-none", !scrolled);
+    };
+
+    window.addEventListener("scroll", showButton);
+    button.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  document.addEventListener("astro:page-load", initializeBackToTop);
+</script>

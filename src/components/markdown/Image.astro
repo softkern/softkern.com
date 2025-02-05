@@ -1,0 +1,23 @@
+---
+import { Image as AstroImage } from 'astro:assets'
+
+interface Props {
+  src: ImageMetadata
+  alt: string
+}
+
+const { src, alt } = Astro.props
+---
+
+<figure
+  class="relative text-center max-w-[855px] border-1 border-gray-200 dark:border-gray-700 switch-animation rd-lg"
+>
+  <AstroImage src={src} alt={alt} width={855} height={100} class={"rd-lg"} />
+  {
+    alt && (
+      <figcaption class="absolute top-0 mt-0 py-1 px-2 text-xs text-[#000000EE] bg-[#e7e7e7AA]">
+        {alt}
+      </figcaption>
+    )
+  }
+</figure>

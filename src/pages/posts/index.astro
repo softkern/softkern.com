@@ -1,0 +1,63 @@
+---
+import Button from '@components/common/Button.astro'
+import PostPreview from '@components/PostPreview.astro'
+import Layout from '@layouts/Layout.astro'
+import { fetchCategoryMap, fetchPosts, fetchTags } from '@utils/post'
+
+const posts = await fetchPosts()
+const categories = Array.from((await fetchCategoryMap()).keys())
+const tags = Array.from((await fetchTags()).keys())
+---
+
+<Layout title="所有文章" description="所有文章都在这了">
+  <div class="space-y-8">
+    <div class="flex items-baseline gap-3">
+      <h1 class="heading text-4xl">博客</h1>
+      <a href="/rss.xml">
+        <div class="i-carbon-rss hover:text-primary-500"></div>
+      </a>
+    </div>
+
+    <div class="flex flex-col md:flex-row gap-8">
+      <div class="md:w-3/4">
+        <div class="space-y-8 mt-8">
+          {posts.map((post) => <PostPreview post={post} />)}
+        </div>
+      </div>
+
+      <aside class="md:w-1/4">
+        <div class="sticky top-8 space-y-8">
+          <div>
+            <h2 class="heading text-xl mb-4">分类</h2>
+            <div class="flex flex-wrap gap-2">
+              {
+                categories.map((category) => (
+                  <Button
+                    href={`/categories/${category}`}
+                    rounded="full"
+                    compact={true}
+                  >
+                    {category}
+                  </Button>
+                ))
+              }
+            </div>
+          </div>
+
+          <div>
+            <h2 class="heading text-xl mb-4">标签</h2>
+            <div class="flex flex-wrap gap-2">
+              {
+                tags.map((tag) => (
+                  <Button href={`/tags/${tag}`} rounded="full" compact={true}>
+                    {tag}
+                  </Button>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</Layout>

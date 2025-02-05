@@ -1,0 +1,49 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { getReadingTime } from '@utils/reading-time'
+import { formatDate } from '../utils/date'
+import Card from './common/Card.astro'
+
+interface Props {
+  post: CollectionEntry<'posts'>
+}
+
+const { post } = Astro.props
+const createdTime = formatDate(post.data.createdAt)
+const readingTime = getReadingTime(post.body)
+---
+
+<article class="group">
+  <Card>
+    {
+      post.data.cover && (
+        <img
+          src={post.data.cover.src}
+          alt={post.data.title}
+          class="w-full h-48 object-cover rounded-t-xl mb-4"
+        />
+      )
+    }
+    <div
+      class="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400"
+    >
+      <time datetime={post.data.createdAt.toISOString()}>{createdTime}</time>
+      {
+        readingTime && (
+          <>
+            <span>•</span>
+            <span>{readingTime}</span>
+          </>
+        )
+      }
+    </div>
+    <a href={`/posts/${post.slug}`} class="block group-hover:text-primary-500">
+      <h2 class="heading text-2xl mt-2 mb-2 hover:text-primary-500">
+        {post.data.title}
+      </h2>
+    </a>
+    <p class="text-gray-600 dark:text-gray-400">
+      {post.data.excerpt}
+    </p>
+  </Card>
+</article>

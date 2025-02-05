@@ -13,9 +13,15 @@
     "check": "biome check ."
   },
   "dependencies": {
+    "@astrojs/mdx": "^4.0.7",
+    "@astrojs/partytown": "^2.1.3",
+    "@astrojs/rss": "^4.0.11",
+    "@astrojs/sitemap": "^3.2.1",
     "@tailwindcss/vite": "^4.0.3",
     "astro": "^5.2.3",
+    "astro-expressive-code": "^0.40.1",
     "astro-icon": "^1.1.5",
+    "dayjs": "^1.11.13",
     "tailwindcss": "^4.0.3"
   },
   "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0",
@@ -24,9 +30,13 @@
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
     "@iconify-json/carbon": "^1.2.6",
+    "@iconify-json/line-md": "^1.2.5",
     "@tailwindcss/typography": "^0.5.16",
     "husky": "^9.1.7",
-    "lint-staged": "^15.4.3"
+    "lint-staged": "^15.4.3",
+    "mdast-util-from-markdown": "^2.0.2",
+    "mdast-util-to-string": "^4.0.0",
+    "reading-time": "^1.5.0"
   },
   "lint-staged": {
     "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [

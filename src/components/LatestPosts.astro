@@ -1,0 +1,23 @@
+---
+import { fetchPosts } from '@utils/post'
+import PostPreview from './PostPreview.astro'
+
+const posts = await fetchPosts()
+const recentPosts = posts.slice(0, 5)
+---
+
+<section>
+  <div class="flex items-center justify-between mb-8">
+    <h2 class="heading text-2xl">最新文章</h2>
+    <a
+      href="/posts"
+      class="color-mark hover:text-primary-600 dark:hover:text-primary-400 inline-flex items-center gap-1"
+    >
+      查看更多
+      <div class="i-carbon-arrow-right"></div>
+    </a>
+  </div>
+  <div class="space-y-8">
+    {recentPosts.map((post) => <PostPreview post={post} />)}
+  </div>
+</section>

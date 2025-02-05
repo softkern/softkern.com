@@ -1,0 +1,70 @@
+---
+import Breakline from '@components/common/Breakline.astro'
+import Brand from './Brand.astro'
+import Menu from './Menu.astro'
+import ThemeToggle from './ThemeToggle.astro'
+import { Icon } from 'astro-icon/components'
+---
+
+<header class="lg:w-1/5">
+  <div
+    class="sticky top-0 z-10 flex flex-col space-y-6 transition-all duration-300 lg:py-6"
+  >
+    <div
+      class="bg-[#fafafa] dark:bg-[#121212] fixed z-20 w-full bg-light p-5 shadow-sm dark:border-b dark:border-neutral-800 dark:bg-dark sm:shadow-none lg:relative lg:border-none lg:!bg-transparent lg:p-0"
+    >
+      <div class="flex items-center justify-between lg:flex-col lg:space-y-4">
+        <Brand />
+        <button id="menu-toggle" class="lg:hidden">
+          <Icon id="menu-open-btn" name="line-md:menu" size={24} />
+          <Icon
+            id="menu-close-btn"
+            class="hidden"
+            name="line-md:close"
+            size={24}
+          />
+        </button>
+      </div>
+    </div>
+
+    <div
+      id="menu"
+      class="hidden fixed bg-[#fafafa] dark:bg-[#121212] top-22 left-0 right-0 bottom-0 lg:static lg:block space-y-3"
+    >
+      <Menu />
+      <Breakline />
+      <ThemeToggle />
+    </div>
+  </div>
+</header>
+
+<script>
+  let isOpen = false;
+  function toggleMenu(open?: boolean) {
+    isOpen = open ?? !isOpen;
+    const openBtn = document.getElementById("menu-open-btn");
+    const closeBtn = document.getElementById("menu-close-btn");
+    const menu = document.getElementById("menu");
+
+    if (isOpen) {
+      openBtn?.classList.add("hidden");
+      closeBtn?.classList.remove("hidden");
+      menu?.classList.remove("hidden");
+    } else {
+      openBtn?.classList.remove("hidden");
+      closeBtn?.classList.add("hidden");
+      menu?.classList.add("hidden");
+    }
+  }
+
+  document.addEventListener("astro:page-load", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    toggleMenu(false);
+
+    if (menuToggle) {
+      menuToggle.addEventListener("click", () => {
+        toggleMenu();
+      });
+    }
+  });
+</script>

@@ -1,7 +1,13 @@
 ---
+import Intro from '@components/Intro.astro'
 import Layout from '../layouts/Layout.astro'
+import LatestPosts from '@components/LatestPosts.astro'
+import { SITE } from 'config'
 ---
 
-<Layout>
-  <h1>Hello, World!</h1>
+<Layout title={SITE.title} description={SITE.description || ""}>
+  <div class="space-y-8">
+    <Intro />
+    <LatestPosts />
+  </div>
 </Layout>

@@ -1,0 +1,40 @@
+---
+import type { MenuItemProps } from '@types'
+import { Icon } from 'astro-icon/components'
+
+type Props = MenuItemProps
+
+const { ...item } = Astro.props
+const currentPath = Astro.url.pathname
+---
+
+<a href={item.href} target={item.isExternalUrl ? "_blank" : ""}>
+  <div
+    class:list={[
+      "flex items-center gap-2 py-2 pl-4 pr-2.5 text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 hover:dark:text-neutral-300 rounded-lg group",
+      currentPath === item.href
+        ? "bg-neutral-200 dark:bg-neutral-800 text-neutral-900 dark:!text-neutral-200"
+        : "hover:dark:lg:bg-neutral-800 hover:dark:!text-neutral-300 hover:lg:bg-neutral-200 hover:lg:rounded-lg lg:transition-all lg:duration-300",
+    ]}
+  >
+    {
+      item.icon && (
+        <div
+          class:list={[
+            "group-hover:-rotate-12",
+            currentPath === item.href ? "animate-pulse" : "",
+          ]}
+        >
+          <Icon name={item.icon} height={20} width={20} />
+        </div>
+      )
+    }
+
+    <div class="ml-0.5 flex-grow">{item.name}</div>
+
+    <Icon
+      name="carbon:arrow-right"
+      class:list={[currentPath === item.href ? "" : "hidden"]}
+    />
+  </div>
+</a>
