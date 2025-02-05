@@ -1,0 +1,37 @@
+---
+import PostPreview from '@components/PostPreview.astro'
+import Layout from '@layouts/Layout.astro'
+import { fetchPosts, fetchTags } from '@utils/post'
+import type { GetStaticPaths } from 'astro'
+
+export const getStaticPaths = (async () => {
+  const posts = await fetchPosts()
+  const tags = Array.from((await fetchTags()).keys())
+
+  return tags.map((tag) => {
+    const filteredPosts = posts.filter((post) => post.data.tags?.includes(tag))
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    }
+  })
+}) satisfies GetStaticPaths
+
+const { tag } = Astro.params
+const { posts } = Astro.props
+---
+
+<Layout title={`${tag} - 文章标签`} description="">
+  <div class="space-y-8">
+    <div class="flex items-baseline gap-3 mb-16">
+      <h1 class="heading text-4xl">标签: <span>{tag}</span></h1>
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        共 {posts.length} 篇文章
+      </p>
+    </div>
+
+    <div class="space-y-8 mt-8">
+      {posts.map((post) => <PostPreview post={post} />)}
+    </div>
+  </div>
+</Layout>

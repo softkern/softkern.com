@@ -1,0 +1,42 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import PostPreview from '@/components/PostPreview.astro'
+import Layout from '@layouts/Layout.astro'
+import { fetchCategoryMap } from '@utils/post'
+import type { GetStaticPaths } from 'astro'
+
+export const getStaticPaths = (async () => {
+  const categoryMap = await fetchCategoryMap()
+  const categories = Array.from(categoryMap.keys())
+
+  return categories.flatMap((category) => {
+    const filterPosts = categoryMap.get(category) || []
+    return {
+      params: { category },
+      props: { posts: filterPosts },
+    }
+  })
+}) satisfies GetStaticPaths
+
+interface Props {
+  posts: CollectionEntry<'posts'>[]
+}
+
+const { posts } = Astro.props
+const { category } = Astro.params
+---
+
+<Layout title={`${category} - 文章分类`} description="">
+  <div class="space-y-8">
+    <div class="flex items-baseline gap-3 mb-16">
+      <h1 class="heading text-4xl">分类: <span>{category}</span></h1>
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        共 {posts.length} 篇文章
+      </p>
+    </div>
+
+    <div class="space-y-8 mt-8">
+      {posts.map((post) => <PostPreview post={post} />)}
+    </div>
+  </div>
+</Layout>
