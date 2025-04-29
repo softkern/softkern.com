@@ -1,0 +1,39 @@
+---
+// src/components/ui/Tag.astro
+interface Props {
+  text: string
+  color?: 'blue' | 'green' | 'red' | 'yellow' | 'purple' | 'gray'
+  size?: 'sm' | 'md'
+  href?: string
+}
+
+const { text, color = 'blue', size = 'sm', href } = Astro.props
+
+const colorClasses = {
+  blue: 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300',
+  green: 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300',
+  red: 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300',
+  yellow: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300',
+  purple: 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300',
+  gray: 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300',
+}
+
+const sizeClasses = {
+  sm: 'text-xs px-2 py-0.5',
+  md: 'text-sm px-2.5 py-0.5',
+}
+
+const Element = href ? 'a' : 'span'
+---
+
+<Element
+  href={href}
+  class:list={[
+    "inline-flex items-center rounded-full font-medium",
+    colorClasses[color],
+    sizeClasses[size],
+    href ? 'hover:opacity-80' : '',
+  ]}
+>
+  {text}
+</Element>

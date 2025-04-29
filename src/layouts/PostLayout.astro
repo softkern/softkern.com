@@ -1,0 +1,62 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import Button from '@/components/ui/Button.astro'
+import Tag from '@/components/ui/Tag.astro'
+// import TableOfContents from '@/components/TableOfContents.astro'
+import Layout from '@/layouts/Layout.astro'
+import { formatDate } from '@/lib/date'
+import type { MarkdownHeading } from 'astro'
+// import '@styles/prose.css'
+
+interface Props {
+  post: CollectionEntry<'posts'>
+  headings: MarkdownHeading[]
+}
+
+const { post, headings } = Astro.props
+const formattedTime = formatDate(post.data.pubDate)
+// const readingTime = getReadingTime(post.body)
+---
+
+<Layout
+  title={post.data.title}
+  description={post.data.description || ""},
+>
+  <article class="max-w-3xl mx-auto">
+    <div class="mb-8">
+      <Button variant="outline" size="sm" class="mb-8">
+        <a href="/posts" class="flex items-center">
+          <div class="i-lucide-arrow-right mr-2 h-4 w-4"></div>
+          返回博客列表
+        </a>
+      </Button>
+
+      <h1 class="mb-4 text-3xl font-bold md:text-4xl">{post.data.title}</h1>
+
+      <div class="mb-6 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+        <div class="flex items-center">
+          <div class="i-lucide-calendar mr-1 h-4 w-4"></div>
+          {new Date(post.data.pubDate).toLocaleDateString("zh-CN", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+        </div>
+        <!-- <div class="flex items-center">
+          <div class="i-lucide-clock mr-1 h-4 w-4" />
+          {post.readTime}
+        </div> -->
+      </div>
+
+      <div class="mb-8 flex flex-wrap gap-2">
+        {post.data.tags.map((tag) => (
+          <Tag text={tag} />
+        ))}
+      </div>
+    </div>
+
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      <slot />
+    </div>
+  </article>
+</Layout>

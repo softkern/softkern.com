@@ -1,0 +1,52 @@
+---
+import Button from '../ui/Button.astro'
+import Tag from '../ui/Tag.astro'
+import HeroIcons from './HeroIcons.astro'
+---
+
+<section class="relative w-full overflow-hidden">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center px-4 md:px-6">
+    <!-- left -->
+    <div class="py-20 md:py-0">
+      <div class="mb-6 inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+        <div class="i-lucide-sparkles mr-2 h-3.5 w-3.5"></div>
+        业余全栈开发者 & 科技爱好者
+      </div>
+
+      <h1 class="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+        创造有意义的
+        <br />
+        <span class="text-primary">数字体验</span>
+      </h1>
+
+      <p class="mb-8 max-w-md text-lg text-muted-foreground">
+        我专注于创建简洁、高效且富有创意的数字产品，让用户体验更加愉悦。
+      </p>
+
+      <div class="mb-8 flex flex-wrap gap-2">
+        <Tag text="python" class:list={["rounded-full px-3 py-1"]} />
+      </div>
+
+      <div class="flex flex-wrap gap-4">
+        <Button size='lg' class='rounded-full px-6'>
+          <a href="/projects" class="flex items-center justify-center">
+            查看博客
+            <div class="i-lucide-arrow-right ml-2 h-4 w-4"></div>
+          </a>
+        </Button>
+        <Button variant='outline' size='lg' class="rounded-full px-6">
+          <a href="/about">
+            关于
+          </a>
+        </Button>
+      </div>
+    </div>
+
+    <!-- right -->
+    <div class="h-full flex items-center justify-center">
+      <div class="aspect-ratio-1 w-full max-w-[500px] rounded-xl border bg-background/50 shadow-xl">
+        <HeroIcons />
+      </div>
+    </div>
+  </div>
+</section>

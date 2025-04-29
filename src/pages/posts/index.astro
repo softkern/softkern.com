@@ -1,0 +1,32 @@
+---
+import PostPreview from '@/components/sections/PostPreview.astro'
+import Button from '@/components/ui/Button.astro'
+import Layout from '@/layouts/Layout.astro'
+import { fetchCategoryMap, fetchPosts, fetchTags } from '@/lib/post'
+
+const posts = await fetchPosts()
+const categories = Array.from((await fetchCategoryMap()).keys())
+const tags = Array.from((await fetchTags()).keys())
+---
+
+<Layout title="所有文章" description="所有文章都在这了">
+  <div class="py-12">
+    <div class="mb-12 space-y-4 text-center">
+      <h1 class="text-4xl font-bold">博客文章</h1>
+      <p class="text-xl text-muted-foreground">分享我的想法、经验和知识</p>
+    </div>
+
+    {posts.length > 0 ? (
+      <div class="space-y-6">
+        {posts.map((post) => (
+          <PostPreview post={post} />
+        ))}
+      </div>
+    ) : (
+      <div class="flex flex-col items-center justify-center rounded-lg border py-12 text-center">
+        <p class="text-lg font-medium">没有找到匹配的文章</p>
+        <p class="text-muted-foreground">请尝试不同的搜索词或标签</p>
+      </div>
+    )}
+  </div>
+</Layout>

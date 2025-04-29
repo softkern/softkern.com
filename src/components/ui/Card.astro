@@ -1,0 +1,22 @@
+---
+interface Props {
+  class?: string
+  hover?: boolean
+  padded?: boolean
+}
+
+const { class: className = '', hover = true, padded = true } = Astro.props
+
+const baseClasses = 'rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden'
+const hoverClasses = hover ? 'transition-transform hover:shadow-md hover:-translate-y-1' : ''
+const paddingClasses = padded ? 'p-4' : ''
+---
+
+<div class:list={[
+  baseClasses,
+  hoverClasses,
+  paddingClasses,
+  className,
+]}>
+  <slot />
+</div>

@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets'
+import { fetchPosts } from '@/lib/post'
+import Button from '../ui/Button.astro'
+import PostPreview from './PostPreview.astro'
+
+const posts = await fetchPosts()
+const recentPosts = posts.slice(0, 5)
+---
+
+
+<section class="relative min-h-screen w-full py-20">
+  <div class="mx-auto max-w-7xl px-4 md:px-6">
+    <div class="mb-16 max-w-2xl">
+      <h2
+        class="mb-4 text-3xl font-bold md:text-4xl"
+      >
+        最新博客
+      </h2>
+      <p
+        class="text-lg text-muted-foreground"
+      >
+        分享我的想法、经验和知识，探索技术和设计的前沿。
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-8">
+      {recentPosts.map((post, index) => (
+        <PostPreview post={post} />
+      ))}
+    </div>
+
+    <div
+      class="mt-16 text-center"
+    >
+      <Button variant="outline" size="lg" class="rounded-full px-6">
+        <a href="/blog" class="flex items-center justify-center">
+          浏览所有文章
+          <div class="i-lucide-arrow-right ml-2 h-4 w-4" />
+        </a>
+      </Button>
+    </div>
+  </div>
+</section>

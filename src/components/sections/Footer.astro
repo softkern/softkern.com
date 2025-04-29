@@ -1,0 +1,83 @@
+---
+import Button from '../ui/Button.astro'
+import Icon from './Icon.astro'
+
+// src/components/Footer.astro
+const currentYear = new Date().getFullYear()
+
+const socialLinks = [
+  { name: 'GitHub', url: 'https://github.com/softkern', icon: 'i-lucide-github' },
+  { name: 'X', url: 'https://x.com/softkern', icon: 'i-carbon-logo-x' },
+  { name: 'Email', url: 'mailto:hi@softkern.com', icon: 'i-lucide-mail' },
+  { name: 'RSS', url: '/rss.xml', icon: 'i-lucide-rss' },
+]
+---
+
+<footer class="border-t bg-background">
+  <div class="mx-auto max-w-5xl px-4 py-10 md:px-6">
+    <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
+      {/* 左侧 - 简介和社交链接 */}
+      <div class="flex flex-col items-center text-center md:items-start md:text-left">
+        <div class="mb-2 flex items-center gap-2">
+          <Icon size='small' />
+          <span class="text-sm font-medium">开发者个人空间</span>
+        </div>
+        <p class="mb-4 max-w-md text-sm text-muted-foreground">
+          专注于创建简洁、高效且富有创意的数字产品，让用户体验更加愉悦。
+        </p>
+        <div class="flex space-x-1">
+          {
+            socialLinks.map((social) => (
+              <Button variant="ghost" size="sm" class="h-8 w-8">
+                <a href={social.url} target="_blank" rel="noopener noreferrer">
+                  <div class={`${social.icon} w-4 h-4`}></div>
+                  <span class="sr-only">{social.name}</span>
+                </a>
+              </Button>
+            ))
+          }
+        </div>
+      </div>
+
+      {/* 右侧 - 导航链接 */}
+      <div class="grid grid-cols-2 gap-8 text-sm sm:grid-cols-3">
+        <div class="space-y-3">
+          <p class="font-medium">导航</p>
+          <ul class="space-y-2">
+            <li>
+              <a href="/" class="text-muted-foreground hover:text-foreground">
+                首页
+              </a>
+            </li>
+            <li>
+              <a href="/about" class="text-muted-foreground hover:text-foreground">
+                关于
+              </a>
+            </li>
+            <li>
+              <a href="/projects" class="text-muted-foreground hover:text-foreground">
+                项目
+              </a>
+            </li>
+            <li>
+              <a href="/blog" class="text-muted-foreground hover:text-foreground">
+                博客
+              </a>
+            </li>
+            <li>
+              <a href="/uses" class="text-muted-foreground hover:text-foreground">
+                工具箱
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 border-t pt-6">
+      <p class="text-center text-sm text-muted-foreground">
+        &copy; {new Date().getFullYear()} 开发者个人网站. 保留所有权利.
+      </p>
+    </div>
+  </div>
+</footer>

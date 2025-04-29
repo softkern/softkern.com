@@ -1,0 +1,19 @@
+---
+import Icon from './Icon.astro'
+import Nav from './Nav.astro'
+import ThemeToggle from './ThemeToggle.astro'
+---
+
+<header
+  class="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-sm"
+>
+  <div class="max-w-5xl mx-auto h-16 flex items-center justify-between px-4 md:px-6">
+    <div class="flex items-center gap-6">
+      <Icon />
+      <Nav />
+    </div>
+    <div class="flex items-center gap-2">
+      <ThemeToggle />
+    </div>
+  </div>
+</header>

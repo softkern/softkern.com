@@ -1,0 +1,41 @@
+---
+import { fetchProjects } from '@/lib/project'
+import Button from '../ui/Button.astro'
+import ProjectPreview from './ProjectPreview.astro'
+
+const featuredProjects = await fetchProjects()
+---
+
+<section class="relative min-h-screen w-full py-20">
+  <div class="mx-auto max-w-7xl px-4 md:px-6">
+    <div class="mb-16 max-w-2xl">
+      <h2
+        class="mb-4 text-3xl font-bold md:text-4xl"
+      >
+        精选项目
+      </h2>
+      <p
+        class="text-lg text-muted-foreground"
+      >
+        探索我的创意和技术作品，每个项目都代表了我对设计和开发的热情。
+      </p>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {featuredProjects.map((project, index) => (
+        <ProjectPreview project={project} />
+      ))}
+    </div>
+
+    <div
+      class="mt-16 text-center"
+    >
+      <Button variant="outline" size="lg" class="rounded-full px-6">
+        <a href="/projects" class="flex items-center">
+          查看所有项目
+          <div class="i-lucide-arrow-right ml-2 h-4 w-4" />
+        </a>
+      </Button>
+    </div>
+  </div>
+</section>

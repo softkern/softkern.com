@@ -1,0 +1,25 @@
+---
+import ProjectPreview from '@/components/sections/ProjectPreview.astro'
+import Layout from '@/layouts/Layout.astro'
+import { fetchProjects } from '@/lib/project'
+
+const projects = await fetchProjects()
+---
+
+
+<Layout title="项目" description='胡乱折腾的一些玩意儿'>
+
+  <div class="py-12">
+    <div class="mb-12 space-y-4 text-center">
+      <h1 class="text-4xl font-bold">项目作品集</h1>
+      <p class="text-xl text-muted-foreground">探索我的创意和技术作品</p>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {projects.map((project, index) => (
+        <ProjectPreview project={project} />
+      ))}
+    </div>
+  </div>
+
+</Layout>

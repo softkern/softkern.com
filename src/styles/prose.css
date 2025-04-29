@@ -1,0 +1,134 @@
+/* 基础排版 */
+.prose {
+  --uno: "max-w-none text-zinc-700 dark:text-zinc-300 text-base leading-7 sm:text-lg";
+}
+
+/* 标题层级 */
+.prose h1 {
+  --uno: "text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 mb-6 mt-12";
+}
+
+.prose h2 {
+  --uno: "text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 mb-6 mt-12";
+}
+
+.prose h3 {
+  --uno: "text-xl md:text-2xl font-semibold text-zinc-800 dark:text-zinc-200 mb-4 mt-8";
+}
+
+.prose h4 {
+  --uno: "text-lg font-medium text-zinc-800 dark:text-zinc-200 mb-3 mt-6";
+}
+
+/* 首字下沉效果 */
+.prose > p:first-of-type {
+  --uno: "text-xl leading-relaxed mb-8";
+}
+
+.prose > p:first-of-type:first-letter {
+  --uno: "text-6xl font-serif mr-3 float-left text-zinc-800 dark:text-zinc-100";
+}
+
+/* 段落和间距 */
+.prose p {
+  --uno: "mb-6 text-base leading-7";
+}
+
+/* 列表样式 */
+.prose ul {
+  --uno: "mb-6 pl-6 list-disc";
+}
+
+.prose ol {
+  --uno: "mb-6 pl-6 list-decimal";
+}
+
+.prose li {
+  --uno: "mb-2";
+}
+
+/* 嵌套列表调整 */
+.prose li > ul,
+.prose li > ol {
+  --uno: "my-2";
+}
+
+/* 引用块 */
+.prose blockquote {
+  --uno: "mb-8 p-6 border-l-4 border-zinc-300 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800/50 rounded-r-lg";
+}
+
+.prose blockquote p {
+  --uno: "text-zinc-700 dark:text-zinc-300 italic mb-0";
+}
+
+.prose blockquote cite {
+  --uno: "block mt-2 text-sm not-italic text-zinc-500 dark:text-zinc-400";
+}
+
+/* 链接样式 */
+.prose a {
+  --uno: "text-zinc-900 dark:text-zinc-100 font-medium underline decoration-zinc-300 dark:decoration-zinc-700 underline-offset-2 hover:text-zinc-700 dark:hover:text-zinc-300 hover:decoration-zinc-500 dark:hover:decoration-zinc-500 transition-all";
+}
+
+/* 代码样式 */
+.prose pre {
+  --uno: "p-4 mb-6 rounded-lg bg-zinc-800 dark:bg-zinc-900 text-zinc-200 overflow-x-auto";
+}
+
+.prose code {
+  --uno: "px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 font-mono text-sm";
+}
+
+.prose pre code {
+  --uno: "bg-transparent p-0 text-zinc-200 dark:text-zinc-300";
+}
+
+/* 水平线 */
+.prose hr {
+  --uno: "my-10 border-t border-zinc-200 dark:border-zinc-800";
+}
+
+/* 表格 */
+.prose table {
+  --uno: "w-full mb-6 border-collapse";
+}
+
+.prose th {
+  --uno: "px-4 py-3 text-left font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700";
+}
+
+.prose td {
+  --uno: "px-4 py-2 border border-zinc-200 dark:border-zinc-700";
+}
+
+/* 图片 */
+.prose img {
+  --uno: "rounded-lg mx-auto my-8 max-w-full h-auto";
+}
+
+/* 图片说明 */
+.prose figure {
+  --uno: "my-8";
+}
+
+.prose figcaption {
+  --uno: "mt-2 text-center text-sm text-zinc-500 dark:text-zinc-400";
+}
+
+/* 其他元素 */
+.prose details {
+  --uno: "mb-6 rounded-lg border border-zinc-200 dark:border-zinc-700 overflow-hidden";
+}
+
+.prose summary {
+  --uno: "px-4 py-3 font-medium bg-zinc-50 dark:bg-zinc-800 cursor-pointer";
+}
+
+.prose details[open] summary {
+  --uno: "border-b border-zinc-200 dark:border-zinc-700";
+}
+
+.prose details > div {
+  --uno: "p-4";
+}

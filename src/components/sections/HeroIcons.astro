@@ -1,0 +1,199 @@
+---
+
+const icons = [
+  {
+    icon: 'i-lucide-code',
+    position: { top: '15%', left: '20%' },
+    color: 'text-blue-500',
+    rotation: 15,
+    delay: 0.1,
+  },
+  {
+    icon: 'i-lucide-file-code',
+    position: { top: '25%', left: '65%' },
+    color: 'text-green-500',
+    rotation: -10,
+    delay: 0.2,
+  },
+  {
+    icon: 'i-lucide-database',
+    position: { top: '60%', left: '25%' },
+    color: 'text-orange-500',
+    rotation: 5,
+    delay: 0.3,
+  },
+  {
+    icon: 'i-lucide-layout',
+    position: { top: '75%', left: '70%' },
+    color: 'text-purple-500',
+    rotation: -5,
+    delay: 0.4,
+  },
+  {
+    icon: 'i-lucide-palette',
+    position: { top: '40%', left: '80%' },
+    color: 'text-pink-500',
+    rotation: 10,
+    delay: 0.5,
+  },
+  {
+    icon: 'i-lucide-terminal',
+    position: { top: '85%', left: '40%' },
+    color: 'text-cyan-500',
+    rotation: -15,
+    delay: 0.6,
+  },
+  {
+    icon: 'i-lucide-github',
+    position: { top: '30%', left: '40%' },
+    color: 'text-gray-500',
+    rotation: 8,
+    delay: 0.7,
+  },
+  {
+    icon: 'i-lucide-figma',
+    position: { top: '50%', left: '15%' },
+    color: 'text-red-500',
+    rotation: -8,
+    delay: 0.8,
+  },
+  {
+    icon: 'i-lucide-layers',
+    position: { top: '20%', left: '85%' },
+    color: 'text-yellow-500',
+    rotation: 12,
+    delay: 0.9,
+  },
+  {
+    icon: 'i-lucide-cpu',
+    position: { top: '70%', left: '85%' },
+    color: 'text-indigo-500',
+    rotation: -12,
+    delay: 1.0,
+  },
+  {
+    icon: 'i-lucide-server',
+    position: { top: '10%', left: '50%' },
+    color: 'text-emerald-500',
+    rotation: 6,
+    delay: 1.1,
+  },
+  {
+    icon: 'i-lucide-globe',
+    position: { top: '90%', left: '15%' },
+    color: 'text-sky-500',
+    rotation: -6,
+    delay: 1.2,
+  },
+  {
+    icon: 'i-carbon-linux',
+    position: { top: '15%', left: '35%' },
+    color: 'text-blue-500',
+    rotation: 45,
+    delay: 0.2,
+  },
+  {
+    icon: 'i-lucide-sparkles',
+    position: { top: '80%', left: '30%' },
+    color: 'text-pink-500',
+    rotation: -30,
+    delay: 0.5,
+  },
+  {
+    icon: 'i-lucide-gamepad',
+    position: { top: '45%', left: '45%' },
+    color: 'text-orange-500',
+    rotation: 60,
+    delay: 0.8,
+  },
+]
+
+const shapes = [
+  {
+    type: 'square',
+    position: { top: '65%', left: '55%' },
+    color: 'bg-green-500/20',
+    size: 'w-10 h-10',
+    rotation: 15,
+    delay: 0.3,
+  },
+  {
+    type: 'circle',
+    position: { top: '35%', left: '25%' },
+    color: 'bg-purple-500/20',
+    size: 'w-12 h-12',
+    rotation: 0,
+    delay: 0.4,
+  },
+  {
+    type: 'square',
+    position: { top: '25%', left: '75%' },
+    color: 'bg-yellow-500/20',
+    size: 'w-8 h-8',
+    rotation: -15,
+    delay: 0.6,
+  },
+  {
+    type: 'circle',
+    position: { top: '55%', left: '65%' },
+    color: 'bg-cyan-500/20',
+    size: 'w-6 h-6',
+    rotation: 0,
+    delay: 0.7,
+  },
+]
+---
+
+<div class={`relative h-full w-full`}>
+  {/* 背景渐变 */}
+  <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background rounded-xl"></div>
+
+  {/* 图标 */}
+  {icons.map((item, index) => (
+    <div
+      class={`absolute ${item.color} ${item.icon}`}
+      style={{
+        top: item.position.top,
+        left: item.position.left,
+        rotate: `${item.rotation}deg`,
+      }}
+    >
+    </div>
+  ))}
+
+  {/* 几何形状 */}
+  {shapes.map((shape, index) => (
+    <div
+      class="absolute"
+      style={{
+        top: shape.position.top,
+        left: shape.position.left,
+        rotate: `${shape.rotation}deg`,
+      }}
+    >
+      {
+        shape.type === "square" &&
+          <div class={`rounded-sm ${shape.color} ${shape.size}`}></div>
+      }
+      {
+        shape.type === "circle" &&
+          <div class={`rounded-full ${shape.color} ${shape.size}`}></div>
+      }
+    </div>
+  ))}
+
+  {/* 中心标志 */}
+  <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+    <div
+      class="flex h-24 w-24 items-center justify-center rounded-full bg-primary/10 text-primary shadow-lg"
+    >
+      <span class="text-3xl font-bold">D</span>
+    </div>
+  </div>
+
+  {/* 装饰线条 */}
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute left-1/2 top-1/2 h-[200%] w-[1px] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-b from-transparent via-primary/20 to-transparent"></div>
+    <div class="absolute left-1/2 top-1/2 h-[1px] w-[200%] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+  </div>
+</div>

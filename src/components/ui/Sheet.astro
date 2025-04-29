@@ -1,0 +1,57 @@
+---
+interface Props {
+  for: string
+}
+
+const { for: forId } = Astro.props
+---
+
+<div id="side-sheet-overlay" class="fixed min-h-screen w-full inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+<div id="side-sheet" class="fixed top-0 left-0 min-h-screen w-64 bg-background shadow-lg z-50 transform -translate-x-full ease-in-out duration-300">
+  <div class="p-4">
+    <slot />
+  </div>
+  <button id="close-sheet" class="absolute top-4 right-4 text-gray-600 hover:text-gray-800">
+    <div class="i-carbon-close w-6 h-6"></div>
+  </button>
+</div>
+
+<script define:vars={{ forId }}>
+  const sheet = document.getElementById('side-sheet');
+  const overlay = document.getElementById('side-sheet-overlay');
+  const closeButton = document.getElementById('close-sheet');
+  const openButton = document.getElementById(forId); // 你需要在页面中创建这个按钮来打开 Sheet
+
+  function openSheet() {
+    sheet?.classList.remove('-translate-x-full');
+    sheet?.classList.add('translate-x-0');
+    overlay?.classList.remove('hidden');
+  }
+
+  function closeSheet() {
+    sheet?.classList.remove('translate-x-0');
+    sheet?.classList.add('-translate-x-full');
+    overlay?.classList.add('hidden');
+  }
+
+  // 添加事件监听器
+  if (openButton) {
+    openButton.addEventListener('click', openSheet);
+  }
+  if (closeButton) {
+    closeButton.addEventListener('click', closeSheet);
+  }
+  if (overlay) {
+      overlay.addEventListener('click', closeSheet);
+  }
+
+  // 确保在组件加载后执行脚本
+  document.addEventListener('astro:load', () => {
+     const openButtonLoaded = document.getElementById('open-sheet-button');
+     if (openButtonLoaded && !openButton) { // Re-attach if component is loaded dynamically
+         openButtonLoaded.addEventListener('click', openSheet);
+     }
+  });
+
+
+</script>

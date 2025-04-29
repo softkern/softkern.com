@@ -1,0 +1,28 @@
+---
+import { string } from 'astro:schema'
+
+interface Props {
+  size?: 'small' | 'large' | 'default'
+}
+
+const { size = 'default' } = Astro.props
+const sizeMap = {
+  small: 'h-6 w-6',
+  default: 'h-8 w-8',
+  large: 'h-12 w-12',
+}
+const svgMap = {
+  small: '14',
+  default: '18',
+  large: '22',
+}
+---
+
+
+<div class={`relative ${sizeMap[size]} overflow-hidden rounded-full bg-primary`}>
+  <div class="absolute inset-0 flex items-center justify-center text-lg font-bold text-primary-foreground">
+    <svg xmlns="http://www.w3.org/2000/svg" width={svgMap[size]} height={svgMap[size]} viewBox="0 0 32 32">
+      <path class="fill-primary-foreground stroke-primary-foreground" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m18 13l8-11L8 13l6 6l-8 11l18-11Z" />
+    </svg>
+  </div>
+</div>

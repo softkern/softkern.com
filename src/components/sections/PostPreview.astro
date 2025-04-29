@@ -1,0 +1,52 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+  post: CollectionEntry<'posts'>
+}
+
+const { post } = Astro.props
+---
+
+<div>
+  <a
+    href={`/posts/${post.slug}`}
+    class="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-2 p-8 group block overflow-hidden rounded-2xl bg-background transition-all hover:bg-secondary/60"
+  >
+    <div>
+      <div class="mb-4 flex items-center gap-3 text-sm text-muted-foreground">
+        <div class="flex items-center">
+          <div class="i-lucide-calendar mr-1 h-3.5 w-3.5" />
+          {new Date(post.data.pubDate).toLocaleDateString("zh-CN", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+        </div>
+        <span>•</span>
+        <div class="flex items-center">
+          <div class="i-lucide-clock mr-1 h-3.5 w-3.5" />
+          10 mins
+        </div>
+      </div>
+
+      <h3 class="mb-3 text-2xl font-bold transition-colors group-hover:text-primary">{post.data.title}</h3>
+
+      <p class="mb-6 text-muted-foreground">{post.data.description}</p>
+
+      <div class="flex items-center font-medium text-primary">
+        阅读全文
+        <div class="i-lucide-chevron-right ml-1 h-4 w-4 transition-transform group-hover:translate-x-1"></div>
+      </div>
+    </div>
+
+    {post.data.cover && (
+      <img 
+        src={post.data.cover.src} 
+        alt={post.data.title}
+        class="max-sm:w-full h-auto sm:h-42 object-cover object-center"
+      />
+    )}
+  </a>
+
+</div>

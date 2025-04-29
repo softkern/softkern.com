@@ -1,0 +1,55 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import Button from '../ui/Button.astro'
+import Tag from '../ui/Tag.astro'
+
+interface Props {
+  project: CollectionEntry<'projects'>
+}
+
+const { project } = Astro.props
+---
+
+<div
+  id={`project-${project.id}`}
+  class="group relative overflow-hidden rounded-lg border bg-card transition-all hover:shadow-md"
+>
+  <div class="aspect-video w-full bg-muted"></div>
+  <div class="p-4">
+    <h2 class="mb-1 text-lg font-bold">{project.data.title}</h2>
+    <p class="mb-3 text-sm text-muted-foreground line-clamp-2">{project.data.description}</p>
+    <div class="mb-4 flex flex-wrap gap-1">
+      {project.data.tags.map((tag) => (
+        <Tag text={tag} />
+      ))}
+    </div>
+    <div class="flex gap-2 justify-between">
+      <div class="flex gap-2">
+        {
+          project.data.codeUrl &&
+          <Button variant="outline" size="sm" class="rounded-full h-8 px-3 text-xs">
+            <a href={project.data.codeUrl} target="_blank" rel="noopener noreferrer" class="flex items-center">
+              <div class="i-lucide-github mr-1 h-3 w-3" />
+              源码
+            </a>
+          </Button>
+        }
+        {
+          project.data.demoUrl &&
+          <Button variant="outline" size="sm" class="rounded-full h-8 px-3 text-xs">
+            <a href={project.data.demoUrl} target="_blank" rel="noopener noreferrer" class="flex items-center">
+              <div class="i-lucide-earth mr-1 h-3 w-3" />
+              示例
+            </a>
+          </Button>
+        }
+      </div>
+      <Button size="sm" class="rounded-full h-8 px-3 text-xs">
+        <a href={`/projects/${project.slug}`} class="flex items-center">
+          <div class="i-lucide-external-link mr-1 h-3 w-3" />
+          详情
+        </a>
+      </Button>
+    </div>
+  </div>
+</div>

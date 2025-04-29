@@ -1,0 +1,51 @@
+
+<button 
+  id="theme-toggle"
+  class="flex items-center justify-center w-8 h-8 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700"
+  aria-label="Toggle Dark Mode"
+>
+  <!-- sun icon in dark mode, moon icon in light mode -->
+  <div class="i-carbon-moon dark:i-carbon-sun text-xl"></div>
+</button>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const theme = (() => {
+      const localStorageTheme = localStorage?.getItem("theme") ?? '';
+      if (['dark', 'light'].includes(localStorageTheme)) {
+        return localStorageTheme;
+      }
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        return "dark";
+      }
+      return "light";
+    })();
+  
+    if (theme === "light") {
+      document.documentElement.classList.remove("dark");
+    } else {
+      document.documentElement.classList.add("dark");
+    }
+  
+    window.localStorage.setItem("theme", theme || "dark");
+    
+    const handleToggleClick = () => {
+      const isDark = document.documentElement.classList.toggle("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+
+      document.documentElement.style.transition = 'background-color 0.3s ease';
+    };
+  
+    document.getElementById("theme-toggle")?.addEventListener('click', handleToggleClick)
+  });
+</script>
+
+<script is:inline>
+  function applyTheme() {
+    localStorage.theme === "dark"
+      ? document.documentElement.classList.add("dark")
+      : document.documentElement.classList.remove("dark");
+  }
+  document.addEventListener("astro:after-swap", applyTheme);
+  applyTheme();
+</script>

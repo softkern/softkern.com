@@ -1,0 +1,77 @@
+---
+import { navItems } from 'site.config'
+import Button from '../ui/Button.astro'
+import Sheet from '../ui/Sheet.astro'
+
+const currentPath = Astro.url.pathname
+---
+
+<!-- mobile nav -->
+<div class="md:hidden">
+  <Button variant='ghost'size='sm'  id="open-sheet-button">
+    <div class="i-lucide-menu w-5 h-5"></div>
+  </Button>
+
+  <Sheet for='open-sheet-button'>
+    <div class="flex h-16 items-center border-b px-6">
+      <span class="text-lg font-bold">导航</span>
+    </div>
+    <nav class="grid gap-2 p-4">
+      {navItems.map((item) => {
+        const isActive = currentPath === item.href
+        return (
+          <Button
+            variant={isActive ? "secondary" : "ghost"}
+            class:list={[
+              "justify-start",
+              isActive && "bg-secondary text-secondary-foreground"
+            ]}
+          >
+            <a href={item.href}>
+              {item.name}
+            </a>
+          </Button>
+        )
+      })}
+    </nav>
+  </Sheet>
+</div>
+
+
+<!-- desktop nav  -->
+<nav class="hidden md:block">
+  <ul class="flex items-center gap-6">
+    {
+      navItems.map((item) => {
+        const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
+        return (
+          <li>
+            <a 
+              href={item.href}
+              class:list={[
+                "relative text-sm font-medium transition-colors hover:text-foreground/80",
+                isActive 
+                  ? 'text-foreground active' 
+                  : "text-foreground/60"
+              ]}
+            >
+              {item.name}
+            </a>
+          </li>
+        )
+      })
+    }
+  </ul>
+</nav>
+
+<style>
+  .active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.25rem;
+    height: 2px;
+    width: 100%;
+    --uno: "bg-primary";
+  }
+</style>
