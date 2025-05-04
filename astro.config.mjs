@@ -5,9 +5,13 @@ import UnoCSS from 'unocss/astro'
 import mdx from '@astrojs/mdx'
 
 import expressiveCode from 'astro-expressive-code'
+import { siteConfig } from './site.config'
+
+import sitemap from '@astrojs/sitemap'
 
 // https://astro.build/config
 export default defineConfig({
+  site: siteConfig.url,
   integrations: [
     UnoCSS({
       injectReset: true,
@@ -20,5 +24,6 @@ export default defineConfig({
       themes: ['tokyo-night', 'snazzy-light'],
     }),
     mdx(),
+    sitemap(),
   ],
 })

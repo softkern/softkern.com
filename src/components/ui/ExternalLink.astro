@@ -1,0 +1,18 @@
+---
+interface Props {
+  name: string
+  href: string
+}
+
+const { name, href } = Astro.props
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="flex items-center text-primary hover:underline"
+>
+  { name }
+  <div class="i-lucide-external-link ml-1 h-3 w-3" />
+</a>

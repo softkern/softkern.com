@@ -1,7 +1,18 @@
 ---
+import Badge from '../ui/Badge.astro'
 import Button from '../ui/Button.astro'
 import Tag from '../ui/Tag.astro'
 import HeroIcons from './HeroIcons.astro'
+
+const skills = [
+  { name: 'Python', color: 'bg-blue-500/10 text-blue-500' },
+  { name: 'JavaScript', color: 'bg-yellow-500/10 text-yellow-500' },
+  { name: 'React', color: 'bg-cyan-500/10 text-cyan-500' },
+  { name: 'Astro', color: 'bg-green-500/10 text-green-500' },
+  { name: 'UnoCSS', color: 'bg-sky-500/10 text-sky-500' },
+  { name: 'Rust', color: 'bg-purple-500/10 text-purple-500' },
+  { name: 'Go', color: 'bg-pink-500/10 text-pink-500' },
+]
 ---
 
 <section class="relative w-full overflow-hidden">
@@ -14,17 +25,22 @@ import HeroIcons from './HeroIcons.astro'
       </div>
 
       <h1 class="mb-6 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-        创造有意义的
+        用软核方式搞定
         <br />
-        <span class="text-primary">数字体验</span>
+        <span class="text-primary">硬核技术</span>
       </h1>
 
       <p class="mb-8 max-w-md text-lg text-muted-foreground">
-        我专注于创建简洁、高效且富有创意的数字产品，让用户体验更加愉悦。
+        
       </p>
 
       <div class="mb-8 flex flex-wrap gap-2">
-        <Tag text="python" class:list={["rounded-full px-3 py-1"]} />
+        <!-- <Tag text="python" class:list={["rounded-full px-3 py-1"]} /> -->
+        {skills.map(skill => (
+          <Badge variant="outline" class={`rounded-full px-3 py-1 ${skill.color}`}>
+            {skill.name}
+          </Badge>
+        ))}
       </div>
 
       <div class="flex flex-wrap gap-4">

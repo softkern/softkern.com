@@ -1,7 +1,61 @@
 ---
+import Badge from '@/components/ui/Badge.astro'
+import Card from '@/components/ui/Card.astro'
+import development from '@/data/uses/development'
+import hardware from '@/data/uses/hardware'
+import software from '@/data/uses/software'
 import Layout from '@/layouts/Layout.astro'
+
+const toolsets = [hardware, development, software]
 ---
 
-<Layout title="工具" description="我使用的工具和技术栈">
+<Layout title="我的工具箱" description="我使用的工具和技术栈">
+  <div class="mx-auto max-w-3xl py-12">
+    <div class="mb-12 space-y-4 text-center">
+      <h1 class="text-4xl font-bold">我的工具箱</h1>
+      <p class="text-xl text-muted-foreground">这些是我日常使用的工具和设备</p>
+    </div>
 
+    <div class="space-y-12">
+      { toolsets.map(toolset => (
+        <section>
+          <h2 class="mb-4 text-2xl font-bold">{toolset.title}</h2>
+          <p class="mb-6 text-muted-foreground">
+            {toolset.description}
+          </p>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            {
+              toolset.items.map((item) => (
+                <Card padded={false}>
+                  <div class="p-4 flex items-center gap-4">
+                    <img 
+                      src={item.image} 
+                      alt="tool logo" 
+                      decoding="async" 
+                      class="object-cover object-center max-h-20 w-16" 
+                      loading="lazy"
+                    />
+                    <div>
+                      <h3 class="mb-1 text-lg font-semibold">{item.name}</h3>
+                      <p class="mb-3 text-sm text-muted-foreground line-clamp-2 h-10 line-clamp-2">
+                        {item.description}
+                      </p>
+                      <div class="flex flex-wrap gap-1">
+                        {item.tags?.map((tag) => (
+                          <Badge variant="secondary" class="rounded-full text-xs">
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              ))
+            }
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
 </Layout>

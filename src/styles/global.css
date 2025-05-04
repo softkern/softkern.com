@@ -43,6 +43,10 @@
   --ring: 224.3 76.3% 48%;
 }
 
+* {
+  --uno: "border-border";
+}
+
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -62,37 +66,4 @@
 
 ::selection {
   --uno: bg-primary / 20 text-primary-foreground;
-}
-
-/* post content style */
-.prose {
-  --uno: "text-foreground";
-}
-
-.prose h1,
-.prose h2,
-.prose h3,
-.prose h4 {
-  --uno: "font-bold text-foreground";
-}
-
-.prose p,
-.prose li {
-  --uno: "text-foreground/90";
-}
-
-.prose code {
-  --uno: "rounded bg-muted px-1 py-0.5 text-foreground";
-}
-
-.prose pre {
-  --uno: "bg-muted text-foreground";
-}
-
-.prose a {
-  --uno: "text-primary underline underline-offset-2 transition-colors hover:text-primary/80";
-}
-
-.prose blockquote {
-  --uno: "border-l-4 border-primary/20 pl-4 italic text-foreground/80";
 }

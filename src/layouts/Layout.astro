@@ -3,6 +3,7 @@ import { ClientRouter } from 'astro:transitions'
 import Header from '@/components/sections/Header.astro'
 import '@/styles/global.css'
 import Footer from '@/components/sections/Footer.astro'
+import { siteConfig } from 'site.config'
 
 interface Props {
   title: string
@@ -20,8 +21,10 @@ const { title, description } = Astro.props
     <meta name="description" content={description} />
 		<meta name="generator" content={Astro.generator} />
 
+    <link rel="sitemap" href="/sitemap-index.xml" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>{title}</title>
+    <link rel="alternate" type="application/rss+xml" title={siteConfig.title} href={`${Astro.site}rss.xml`} />
+    <title>{title + " - " + siteConfig.title}</title>
     <ClientRouter />
 	</head>
 	<body class="font-sans min-h-screen flex flex-col bg-background text-foreground antialiased">
