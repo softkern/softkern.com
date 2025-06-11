@@ -2,21 +2,21 @@
     <!-- 四个叶片 -->
     <path
       d="M16 2 C10 2, 6 6, 6 12 C6 16, 10 16, 12 16 C12 10, 16 6, 16 6 Z"
-      fill="#3477f5"
+      fill="currentColor"
       class="text-primary-500"></path>
     <path
       d="M30 16 C30 10, 26 6, 20 6 C16 6, 16 10, 16 12 C22 12, 26 16, 26 16 Z"
-      fill="#2158e8"
+      fill="currentColor"
       class="text-primary-600"></path>
     <path
       d="M16 30 C22 30, 26 26, 26 20 C26 16, 22 16, 20 16 C20 22, 16 26, 16 26 Z"
-      fill="#3477f5"
+      fill="currentColor"
       class="text-primary-500"></path>
     <path
       d="M2 16 C2 22, 6 26, 12 26 C16 26, 16 22, 16 20 C10 20, 6 16, 6 16 Z"
-      fill="#2158e8"
+      fill="currentColor"
       class="text-primary-600"></path>
     <!-- 中心圆 -->
-    <circle cx="16" cy="16" r="3" fill="#1b45d2" class="text-primary-700"
+    <circle cx="16" cy="16" r="3" fill="currentColor" class="text-primary-700"
     ></circle>
 </svg>
