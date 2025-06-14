@@ -11,10 +11,10 @@ const currentPath = Astro.url.pathname;
       <a
         href={item.href}
         class:list={[
-          "px-3 py-3 flex items-center gap-5 rounded-lg hover:bg-base-200",
+          "px-3 py-3 flex items-center gap-5 rounded-lg text-#222933 dark:text-#88898d hover:bg-selected",
           currentPath === item.href ||
           (item.href !== "/" && currentPath.startsWith(item.href))
-            ? "bg-base-300/60 hover:bg-base-300"
+            ? "dark:text-#f2f2f2 bg-selected"
             : "",
         ]}
       >

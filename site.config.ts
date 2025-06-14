@@ -4,7 +4,7 @@ export const siteConfig: SiteConfig = {
   title: '软核模式',
   description: '软核模式加载中...',
   url: 'https://softkern.com',
-
+  ogImage: '',
   author: {
     name: 'gaodb',
     email: 'hi@softkern.com',

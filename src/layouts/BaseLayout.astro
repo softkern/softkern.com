@@ -1,17 +1,22 @@
 ---
+import BaseHead, { type HeadProps } from "@components/layout/BaseHead.astro";
 import Sidebar from "@components/layout/Sidebar.astro";
+import { ClientRouter } from "astro:transitions";
+
+type Props = HeadProps;
+
+const headProps = Astro.props;
 ---
 
-<html lang="en" data-theme="light">
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <BaseHead {...headProps} />
+    <ClientRouter />
   </head>
-  <body class="max-w-7xl mx-auto py-8 px-4">
+  <body class="bg-base color-base max-w-7xl mx-auto py-8 px-4 flex">
     <Sidebar />
-    <slot />
+    <main class="flex-1">
+      <slot />
+    </main>
   </body>
 </html>

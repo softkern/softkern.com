@@ -1,0 +1,59 @@
+---
+import { siteConfig } from "config";
+
+export interface HeadProps {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  noindex?: boolean;
+  type?: "website" | "article";
+}
+
+type Props = HeadProps;
+
+const {
+  title = siteConfig.title,
+  description = siteConfig.description,
+  ogImage = siteConfig.ogImage,
+  noindex = false,
+  type = "website",
+} = Astro.props;
+
+const pageTitle =
+  title === siteConfig.title ? title : `${title} | ${siteConfig.title}`;
+
+const fullOgImage = ogImage.startsWith("http")
+  ? ogImage
+  : `${siteConfig.url}${ogImage}`;
+---
+
+<!-- 基础元数据 -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- SEO优化 -->
+<title>{pageTitle}</title>
+<meta name="description" content={description} />
+<meta name="author" content={siteConfig.author.name} />
+
+<!-- 防止搜索引擎索引（如果需要） -->
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- Open Graph 元数据（社交媒体分享优化） -->
+<meta property="og:type" content={type} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={fullOgImage} />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:site_name" content={siteConfig.title} />
+
+<!-- Twitter卡片元数据 -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={fullOgImage} />
+
+<!-- 网站图标 -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

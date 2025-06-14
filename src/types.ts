@@ -26,6 +26,7 @@ export interface SiteConfig {
   title: string
   description: string
   url: string
+  ogImage: string
   author: Author
   menu?: MenuItem[]
   social?: SocialItem[]
