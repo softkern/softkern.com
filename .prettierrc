@@ -1,0 +1,26 @@
+{
+  "plugins": ["prettier-plugin-astro"],
+  "singleQuote": true,
+  "trailingComma": "none",
+  "tabWidth": 2,
+  "overrides": [
+    {
+      "files": "*.astro",
+      "options": {
+        "parser": "astro"
+      }
+    },
+    {
+      "files": ["*.md", "*.mdx", "*.yaml"],
+      "options": {
+        "tabWidth": 2
+      }
+    },
+    {
+      "files": ["*.jsx", "*.js"],
+      "options": {
+        "jsxSingleQuote": true
+      }
+    }
+  ]
+}
